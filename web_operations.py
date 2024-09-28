@@ -1,32 +1,30 @@
 import requests
 import pdfkit
 import random
+from bs4 import BeautifulSoup
 
 
 def collect_data():
-    from bs4 import BeautifulSoup
 
-    # Fetch a webpage
+    #? Fetch a webpage
     response = requests.get(input("Enter url: "))
 
-    # Parse the HTML content
+    #? get HTML content
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Find and print all links on the page
+    #? print all links on the page
     for link in soup.find_all("a"):
         print(link.get("href"))
 
 
 def create_pdf():
     n = random.randint(1, 99)
-    n = str(n)
-    # URL of the website to convert
     url = input("Enter url: ")
 
-    # Output PDF file
-    pdf_file = "website_output" + n + ".pdf"
+    #? Output PDF file
+    pdf_file = f"website_output {n}.pdf"
 
-    # Convert URL to PDF
+    #? HTML to PDF
     try:
         pdfkit.from_url(url, pdf_file)
         print(f"Successfully converted {url} to {pdf_file}")
