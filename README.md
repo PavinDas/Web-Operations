@@ -53,4 +53,4 @@ python  web_operations.py
 
 <h2>🛡️ Ownership:</h2>
 
-This project is owned by the PavinDas
+This project is owned by PavinDas
